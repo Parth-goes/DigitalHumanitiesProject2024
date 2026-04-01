@@ -195,16 +195,22 @@ body {
    display: grid;
    place-items: center;
    margin-inline: 1.5rem;
-   padding-block:5rem;
+   padding-block:1rem;
+   overflow: hidden;
+    max-width: 1190px; /* Adjust based on your design */
+    margin: 0 auto;
 
 }
 .card__container{
-    display: grid;
-    row-gap: 3.5rem;   
+    display: flex;
+    gap: 2rem;   
+    transition: transform 0.5s ease-out; /* Smooth sliding transition */
+    width: max-content;
 }
 .card__article{
     position: relative;
     overflow: hidden;
+    flex: 0 0 auto;
 }
 .card__img{
     width: 328px;
@@ -460,4 +466,285 @@ text-align: center;
    padding: 10px;
    transition: all 0.3s ease;
    cursor: pointer;
+}
+.More{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+.card_container_hero{
+    padding-block: 5rem;
+
+}
+.card_content_hero{
+    margin-inline: 1.75rem;
+    border-radius: 1.25rem;
+    overflow: hidden;    
+}
+.card_article{
+    width:300px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+.card__img{
+    position: relative;
+    background-color: hsl(38,92%,58%);
+    padding-top: 1.5rem;
+    margin-bottom: -0.75rem;
+}
+.card_data{
+    background-color: hsl(212,42%,20%);
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    z-index:10;
+}
+.card_img{
+    width:180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+.card_shadow{
+    width: 200;
+    height: 200px;
+    background-color: hsl(32,75%,50%) ;
+    border-radius: 50%;
+    position: absolute;
+    top:3.75rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    filter:blur(45px);
+
+}
+.card_name{
+    font-size: 1.25rem;
+    color: hsl(195,75%,52%);
+    margin-bottom: 0.75rem;
+}
+.card_description{
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+}
+.card_button{
+    display: inline-block;
+    background-color: hsl(38,92%,58%);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    color: hsl(212, 42%, 15%);
+    font-weight: 600;
+}
+/* === Koel Info Card === */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+#overlay.hidden {
+  display: none;
+}
+
+.koel-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  animation: slideUp 0.25s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1rem;
+}
+
+.bird-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #E1F5EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  color: #111;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  font-style: italic;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.tag-green { background: #E1F5EE; color: #0F6E56; }
+.tag-blue  { background: #E6F1FB; color: #185FA5; }
+.tag-amber { background: #FAEEDA; color: #854F0B; }
+
+.card-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.card-table-wrapper {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.card-table {
+  width: 100%;
+  font-size: 13px;
+  border-collapse: collapse;
+}
+
+.card-table td {
+  padding: 5px 0;
+  vertical-align: top;
+}
+
+.card-table .label {
+  color: #888;
+  width: 40%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slider-btnprev {
+    left: 10px;
+}
+
+.slider-btnnext {
+    right: 10px;
+}
+@media (max-width: 768px) {
+    .slider-btn {
+        display: none;
+    }
+}
+
+/* Dot Indicators */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.slider-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slider-dots .dot.active {
+    background: #333;
+}
+.slider-wrapper {
+    position: relative; /* Context for absolute buttons */
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-btnprev, .slider-btnnext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0b3d91;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100; /* Ensure they stay on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.slider-btnprev:hover, .slider-btnnext:hover {
+    background: #088178;
+}
+
+.slider-btnprev { left: 20px; }
+.slider-btnnext { right: 20px; }
+
+/* Ensure the container doesn't wrap the flex items */
+.card__container {
+    display: flex;
+    flex-wrap: nowrap; /* Critical: keeps cards in one line */
+}
+#florafauna.section-p1 {
+    padding-top: 10px;    /* Reduced from 40px */
+    padding-bottom: 20px; /* Reduced from 40px */
+}
+#florafauna h2 {
+    margin-bottom: 0.5rem;
+}
+
+#florafauna p {
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* Controls space between text and the slider */
 }
