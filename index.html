@@ -92,15 +92,16 @@
 <section id="florafauna" class="section-p1">
     <h2>Flora and Fauna @IIST</h2>
     <p>In this section, you can explore the diverse plants and animals that bring life and vibrancy to the campus.</p>
+    <div class="slider-wrapper">
     <div class="container">
         <div class="card__container">
             <article class="card__article">
                 <img src="bird.png" alt="Sparrow" class="card__img">
 
                 <div class="card__data">
-                    <span class="card__description">Scientic Name </span>
-                    <h2 class="card__title">Name</h2> 
-                    <a href="#" class="card__button">Read More</a>
+                    <span class="card__description">Eudynamys scolopaceus</span>
+                    <h2 class="card__title">Asian Koel</h2> 
+                    <a href="IndianKoel.html" class="card__button">Read More</a>
                     
                 </div>
             </article>
@@ -109,9 +110,9 @@
                 <img src="bird.png" alt="Sparrow" class="card__img">
 
                 <div class="card__data">
-                    <span class="card__description"> Scientic Name</span>
-                    <h2 class="card__title">name</h2> 
-                    <a href="#" class="card__button">Read More</a>
+                    <span class="card__description">Dinopium benghalense</span>
+                    <h2 class="card__title"style="line-height: 1.3;">Black-rumped Flameback</h2> 
+                    <a href="black-rumpedflameback.html" class="card__button">Read More</a>
                     
                 </div>
             </article>
@@ -120,16 +121,96 @@
                 <img src="bird.png" alt="Sparrow" class="card__img">
 
                 <div class="card__data">
-                    <span class="card__description">Scientific name</span>
-                    <h2 class="card__title">name</h2> 
-                    <a href="#" class="card__button">Read More</a>
+                    <span class="card__description">Acridotheres tristis</span>
+                    <h2 class="card__title">Common Myna</h2> 
+                    <a href="myna.html" class="card__button">Read More</a>
+                    
+                </div>
+            </article>
+        <article class="card__article">
+                <img src="bird.png" alt="Sparrow" class="card__img">
+
+                <div class="card__data">
+                    <span class="card__description"> Orthotomus sutorius</span>
+                    <h2 class="card__title">Common Tailorbird</h2> 
+                    <a href="tailorbird.html" class="card__button">Read More</a>
+                    
+                </div>
+            </article>
+        <article class="card__article">
+                <img src="bird.png" alt="Sparrow" class="card__img">
+
+                <div class="card__data">
+                    <span class="card__description">Bubulcus coromandus</span>
+                    <h2 class="card__title">Eastern Cattle Egret</h2> 
+                    <a href="cattle.html" class="card__button">Read More</a>
+                    
+                </div>
+            </article>
+        <article class="card__article">
+                <img src="bird.png" alt="Sparrow" class="card__img">
+
+                <div class="card__data">
+                    <span class="card__description">Treron affinis</span>
+                    <h2 class="card__title"style="line-height: 1.3";>Gray-fronted Green Pigeon</h2> 
+                    <a href="pigeongreen.html" class="card__button">Read More</a>
                     
                 </div>
             </article>
         </div>
     </div>
+<button class="slider-btnprev" aria-label="Previous">‹</button>
+<button class="slider-btnnext" aria-label="Next">›</button>
 </section>
-<script src="script.js">
-    </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.card__container');
+    const cards = document.querySelectorAll('.card__article');
+    const prevBtn = document.querySelector('.slider-btnprev');
+    const nextBtn = document.querySelector('.slider-btnnext');
+
+    let currentIndex = 0;
+
+    function updateSlider() {
+        if (cards.length === 0) return;
+
+        const cardWidth = cards[0].offsetWidth;
+        // Get the actual gap from CSS
+        const gap = parseFloat(getComputedStyle(container).gap) || 0;
+        const scrollAmount = currentIndex * (cardWidth + gap);
+
+        container.style.transform = `translateX(-${scrollAmount}px)`;
+
+        // Button States
+        prevBtn.style.opacity = currentIndex === 0 ? "0.3" : "1";
+        prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+
+        const visibleCards = Math.floor(document.querySelector('.container').offsetWidth / cardWidth);
+        const maxIndex = cards.length - visibleCards;
+        
+        nextBtn.style.opacity = currentIndex >= maxIndex ? "0.3" : "1";
+        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? "none" : "auto";
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const cardWidth = cards[0].offsetWidth;
+        const visibleCards = Math.floor(document.querySelector('.container').offsetWidth / cardWidth);
+        if (currentIndex < cards.length - visibleCards) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
+});
+</script>
 </body>
 </html>
